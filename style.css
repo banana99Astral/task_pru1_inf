@@ -1,0 +1,237 @@
+/* ============ 1. PALETA Y VARIABLES (ajusta los colores aquí) ============ */
+:root{
+  --crema:#fdfbf7;      /* fondo general */
+  --rosa:#cbbaf5;       /* acento principal (lila) */
+  --rosa-claro:#ece5fb; /* lila muy claro */
+  --menta:#e2f0d9;
+  --lavanda:#d6dcf9;    /* lila azulado */
+  --durazno:#f4e6f7;    /* orquídea suave */
+  --tinta:#4a4e69;      /* texto */
+  --tinta-suave:#7b7f99;
+  --blanco:#ffffff;     /* superficie de tarjetas */
+  --on-acento:#4a4e69;  /* texto sobre el lila */
+  --cabecera:rgba(253,251,247,.88);
+  --velo:rgba(255,255,255,.7);
+  --brillo-boton:rgba(203,186,245,.6);
+  --radio:18px;
+  --sombra:0 8px 24px rgba(74,78,105,.09);
+  --sombra-hover:0 14px 30px rgba(74,78,105,.16);
+  --titulos:'Quicksand','Nunito',sans-serif;
+  --texto:'Nunito','Quicksand',system-ui,sans-serif;
+}
+/* ============ MODO OSCURO (se activa con el botón 🌙 del menú) ============ */
+[data-tema="oscuro"]{
+  --crema:#1f1b2e;
+  --rosa:#b9a2f5;
+  --rosa-claro:#3b3160;
+  --menta:#2f4440;
+  --lavanda:#3a3560;
+  --durazno:#44345a;
+  --tinta:#efeaff;
+  --tinta-suave:#b9b2d6;
+  --blanco:#2b2640;
+  --on-acento:#1f1b2e;
+  --cabecera:rgba(31,27,46,.88);
+  --velo:rgba(31,27,46,.55);
+  --brillo-boton:rgba(185,162,245,.35);
+  --sombra:0 8px 24px rgba(0,0,0,.3);
+  --sombra-hover:0 14px 30px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+
+/* ============ 2. BASE ============ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{position:relative;margin:0;background:var(--crema);color:var(--tinta);font:400 1.04rem/1.7 var(--texto);padding-bottom:env(safe-area-inset-bottom,0px);transition:background .4s ease,color .4s ease}
+h1,h2,h3,h4{font-family:var(--titulos);font-weight:700;line-height:1.2;margin:0}
+p{margin:0 0 12px}
+.contenedor{max-width:1020px;margin:0 auto;padding:0 20px}
+section{padding:46px 0}
+.etiqueta{display:inline-block;background:var(--lavanda);padding:3px 14px;border-radius:99px;font:700 .85rem var(--titulos);margin-bottom:10px}
+h2{font-size:clamp(1.5rem,4vw,2rem);margin-bottom:12px}
+.intro{color:var(--tinta-suave);max-width:60ch;margin-bottom:24px}
+
+/* ============ 3. HEADER ============ */
+/* Barra flotante: una "píldora" suave que se queda arriba al bajar */
+header{position:sticky;top:0;z-index:20;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 0;pointer-events:none;transition:transform .45s ease}
+header.oculta{transform:translateY(-160%)} /* se esconde al bajar y reaparece al subir */
+.barra{
+  pointer-events:auto;max-width:1020px;margin:0 auto;padding:9px 12px 9px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  background:var(--cabecera);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1.5px solid var(--rosa-claro);border-radius:28px;box-shadow:var(--sombra);
+  animation:baja .7s cubic-bezier(.3,1.3,.5,1) both;transition:box-shadow .3s,border-color .3s;
+}
+header.scroll .barra{box-shadow:var(--sombra-hover);border-color:var(--rosa)}
+@keyframes baja{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:none}}
+.logo{font:700 1.2rem var(--titulos);text-decoration:none;color:var(--tinta)}
+nav{display:flex;gap:2px;align-items:center}
+nav a{position:relative;text-decoration:none;color:var(--tinta);font:700 .9rem var(--titulos);padding:8px 14px;border-radius:99px;white-space:nowrap;transition:background .25s,color .25s,transform .25s}
+nav a:hover{background:var(--rosa-claro);transform:translateY(-2px)}
+nav a.activo{background:var(--rosa);color:var(--on-acento)}
+
+/* botón de modo claro / oscuro */
+.tema{border:0;background:var(--lavanda);color:var(--tinta);width:38px;height:38px;border-radius:50%;font-size:1.05rem;cursor:pointer;margin-left:6px;flex:none;transition:transform .3s,background .3s}
+.tema:hover{transform:rotate(20deg) scale(1.1);background:var(--rosa)}
+
+/* ============ 4. BOTONES ============ */
+.boton{display:inline-block;border:0;cursor:pointer;text-decoration:none;background:var(--rosa);color:var(--on-acento);font:700 1rem var(--titulos);padding:12px 26px;border-radius:99px;box-shadow:0 6px 16px var(--brillo-boton);transition:transform .25s,box-shadow .25s}
+.boton:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 22px var(--brillo-boton)}
+
+/* ============ 5. HERO ============ */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;padding-top:40px}
+.hero h1{font-size:clamp(2rem,5.5vw,3.1rem);margin:6px 0 14px}
+.hero h1 mark{color:inherit;padding:0 4px}
+.hero p{color:var(--tinta-suave);max-width:50ch;margin-bottom:22px}
+/* marco de la imagen: si Unsplash no carga, se ve el fondo con el emoji */
+.marco{position:relative;aspect-ratio:1/1;border-radius:32px;overflow:hidden;box-shadow:var(--sombra);border:8px solid var(--blanco);background:linear-gradient(135deg,var(--rosa-claro),var(--lavanda));display:grid;place-items:center;font-size:5rem}
+.marco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pegatina{position:absolute;font-size:1.8rem;animation:flota 4s ease-in-out infinite}
+.pegatina.a{top:-8px;right:6px}.pegatina.b{bottom:12px;left:-6px;animation-delay:1.2s}
+.hero-img{position:relative}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ============ 6. CARRUSEL DE HERRAMIENTAS ============ */
+.carrusel{background:var(--menta);border-radius:28px;padding:30px 22px 24px;box-shadow:var(--sombra)}
+.ventana{overflow:hidden;border-radius:var(--radio)}
+.pista{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.slide{flex:0 0 100%;padding:6px}
+.slide-caja{background:var(--blanco);border-radius:var(--radio);padding:28px 24px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;min-height:210px}
+.slide-icono{width:96px;height:96px;border-radius:26px;display:grid;place-items:center;font-size:2.8rem;background:var(--lavanda)}
+.slide:nth-child(2n) .slide-icono{background:var(--rosa-claro)}
+.slide:nth-child(3n) .slide-icono{background:var(--durazno)}
+.slide h3{font-size:1.5rem;margin:6px 0}
+.slide p{margin:0;color:var(--tinta-suave)}
+.controles{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.flecha{width:44px;height:44px;border:0;border-radius:50%;background:var(--blanco);color:var(--tinta);font-size:1.1rem;cursor:pointer;box-shadow:var(--sombra);transition:transform .25s,background .25s}
+.flecha:hover{background:var(--rosa);color:var(--on-acento);transform:scale(1.12)}
+.puntos{display:flex;gap:9px}
+.punto{width:11px;height:11px;border:0;padding:0;border-radius:99px;background:var(--lavanda);cursor:pointer;transition:width .3s,background .3s}
+.punto.activo{width:30px;background:var(--rosa)}
+
+/* ============ 7. TARJETAS DE CONTENIDO ============ */
+.tarjeta{border-radius:var(--radio);padding:28px;box-shadow:var(--sombra);background:var(--blanco);transition:transform .3s,box-shadow .3s}
+.tarjeta:hover{transform:translateY(-5px);box-shadow:var(--sombra-hover)}
+.fondo-rosa{background:var(--rosa-claro)}.fondo-menta{background:var(--menta)}.fondo-lavanda{background:var(--lavanda)}.fondo-durazno{background:var(--durazno)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.mini{background:var(--blanco);border-radius:var(--radio);padding:20px;box-shadow:var(--sombra);transition:transform .3s,box-shadow .3s}
+.mini:hover{transform:translateY(-5px);box-shadow:var(--sombra-hover)}
+.mini .emoji{font-size:1.9rem;display:block;margin-bottom:6px}
+.mini h4{font-size:1.08rem;margin-bottom:4px}
+.mini p{margin:0;color:var(--tinta-suave);font-size:.97rem}
+.sub{font:700 1.05rem var(--titulos);margin:26px 0 12px}
+/* cuadro destacado (Clave estratégica, Batch Creation) */
+.destacado{margin-top:20px;background:var(--blanco);border-left:6px solid var(--rosa);border-radius:var(--radio);padding:16px 20px;box-shadow:var(--sombra)}
+.destacado b{font-family:var(--titulos)}
+.dato{font:700 2.4rem var(--titulos);color:var(--rosa);line-height:1;-webkit-text-stroke:0}
+.versus{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+
+
+/* ============ FOTOS (reemplazan a los emojis) ============ */
+.foto,.slide-foto,.marco{background:linear-gradient(135deg,var(--rosa-claro),var(--lavanda))}
+.foto{position:relative;aspect-ratio:16/6.5;border-radius:var(--radio);overflow:hidden;margin-bottom:22px;display:grid;place-items:center;box-shadow:var(--sombra)}
+.foto img,.slide-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s ease}
+.tarjeta:hover .foto img,.slide-caja:hover .slide-foto img{transform:scale(1.05)}
+/* si una foto no carga, se ve el nombre del tema sobre el fondo lila */
+.foto::after,.slide-foto::after,.marco::after{content:attr(data-nombre);font:700 1.05rem var(--titulos);color:var(--tinta-suave);text-align:center;padding:8px}
+.slide-foto{position:relative;width:170px;aspect-ratio:1;border-radius:22px;overflow:hidden;display:grid;place-items:center}
+section>.foto{margin-bottom:18px}
+
+/* ============ 8. CONCLUSIÓN Y FOOTER ============ */
+.conclusion{background:linear-gradient(135deg,var(--rosa-claro),var(--lavanda));border-radius:28px;padding:34px;box-shadow:var(--sombra)}
+.pasos{list-style:none;counter-reset:p;margin:18px 0 0;padding:0;display:grid;gap:12px}
+.pasos li{counter-increment:p;display:flex;gap:14px;align-items:center;background:var(--velo);border-radius:var(--radio);padding:12px 18px;font-weight:600;transition:transform .25s}
+.pasos li:hover{transform:translateX(6px)}
+.pasos li::before{content:counter(p);flex:none;width:34px;height:34px;border-radius:50%;background:var(--rosa);color:var(--on-acento);display:grid;place-items:center;font:700 1rem var(--titulos)}
+footer{margin-top:40px;background:var(--menta);border-radius:34px 34px 0 0;text-align:center;padding:30px 20px calc(30px + env(safe-area-inset-bottom,0px))}
+footer p{margin:0}footer small{color:var(--tinta-suave)}
+
+
+/* ============ 10. EXTRAS: animaciones y menú desplegable ============ */
+/* barra de progreso de lectura */
+.progreso{position:fixed;top:0;left:0;right:0;height:4px;z-index:60;background:linear-gradient(90deg,var(--rosa),var(--lavanda),var(--menta));transform:scaleX(0);transform-origin:0 50%}
+
+/* manchas de color que flotan detrás de la portada */
+.blobs{position:absolute;top:0;left:0;width:100%;height:920px;overflow:hidden;z-index:-1;pointer-events:none}
+.blobs i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.6;animation:deriva 16s ease-in-out infinite}
+.blobs i:nth-child(1){width:340px;height:340px;background:var(--rosa);top:40px;left:-80px}
+.blobs i:nth-child(2){width:300px;height:300px;background:var(--menta);top:300px;right:-70px;animation-delay:-5s}
+.blobs i:nth-child(3){width:260px;height:260px;background:var(--lavanda);top:560px;left:30%;animation-delay:-9s}
+@keyframes deriva{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.12)}66%{transform:translate(-30px,34px) scale(.94)}}
+
+/* entrada escalonada del texto de la portada + resaltado que se dibuja */
+.hero>div:first-child>*{animation:entra .9s cubic-bezier(.2,.8,.2,1) backwards}
+.hero>div:first-child>*:nth-child(2){animation-delay:.12s}.hero>div:first-child>*:nth-child(3){animation-delay:.24s}.hero>div:first-child>*:nth-child(4){animation-delay:.36s}
+@keyframes entra{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero h1 mark{background:linear-gradient(transparent 60%,var(--rosa) 60%) no-repeat;background-size:0 100%;animation:marca 1s ease .9s forwards}
+@keyframes marca{to{background-size:100% 100%}}
+.marco{animation:flota 6s ease-in-out infinite}
+.forma{position:absolute;z-index:2;animation:flota 5s ease-in-out infinite}
+.forma.f1{width:56px;height:56px;border-radius:50%;background:var(--rosa);top:-16px;right:8px}
+.forma.f2{width:40px;height:40px;border-radius:50%;border:7px solid var(--menta);bottom:26px;left:-14px;animation-delay:-1.5s}
+.forma.f3{width:34px;height:34px;border-radius:10px;background:var(--lavanda);top:42%;right:-12px;transform:rotate(18deg);animation-delay:-3s}
+
+/* cinta de palabras que se desplaza */
+.cinta{overflow:hidden;background:var(--lavanda);border-radius:99px;padding:12px 0;margin:6px 0 10px;box-shadow:var(--sombra)}
+.cinta-pista{display:flex;width:max-content;animation:cinta 28s linear infinite}
+.cinta span{font:700 1rem var(--titulos);padding:0 22px;white-space:nowrap}
+.cinta span::after{content:"";display:inline-block;width:9px;height:9px;margin-left:44px;border-radius:50%;background:var(--rosa)}
+@keyframes cinta{to{transform:translateX(-50%)}}
+
+/* aparecer al bajar */
+.js .rv{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0ms)}
+.js .rv.in{opacity:1;transform:none}
+
+/* el carrusel hace un zoom suave en la foto activa */
+.slide .slide-foto img{transform:scale(1.14);transition:transform 6s ease-out}
+.slide.activa .slide-foto img{transform:scale(1)}
+
+/* ===== MENÚ FLOTANTE (aparece al bajar, en la esquina) ===== */
+.menu-flot{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;z-index:50;
+  opacity:0;transform:scale(.4) rotate(-120deg);pointer-events:none;transition:opacity .4s ease,transform .55s cubic-bezier(.3,1.4,.5,1)}
+.menu-flot.visible{opacity:1;transform:none;pointer-events:auto}
+.menu-btn{width:54px;height:54px;border:0;border-radius:50%;background:var(--rosa);color:var(--on-acento);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:var(--sombra-hover);transition:transform .25s}
+.menu-btn:hover{transform:scale(1.08)}
+.menu-btn span{display:block;width:22px;height:2.5px;border-radius:3px;background:currentColor;transition:transform .35s,opacity .25s}
+.menu-flot.abierto .menu-btn span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.menu-flot.abierto .menu-btn span:nth-child(2){opacity:0}
+.menu-flot.abierto .menu-btn span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.menu-panel{position:absolute;top:66px;right:0;width:min(260px,calc(100vw - 28px));padding:10px;border-radius:24px;
+  background:var(--blanco);border:1.5px solid var(--rosa-claro);box-shadow:var(--sombra-hover);
+  display:flex;flex-direction:column;gap:2px;transform-origin:100% 0;
+  opacity:0;visibility:hidden;transform:scale(.8) translateY(-10px);transition:opacity .3s,transform .4s cubic-bezier(.3,1.3,.5,1),visibility .3s}
+.menu-flot.abierto .menu-panel{opacity:1;visibility:visible;transform:none}
+.menu-panel a,.panel-tema{display:block;text-align:left;text-decoration:none;color:var(--tinta);font:700 1rem var(--titulos);padding:13px 16px;border-radius:16px;border:0;background:none;cursor:pointer;
+  opacity:0;transform:translateX(14px);transition:background .25s,opacity .35s,transform .35s;transition-delay:0s,calc(var(--i,0)*45ms),calc(var(--i,0)*45ms)}
+.menu-flot.abierto .menu-panel a,.menu-flot.abierto .panel-tema{opacity:1;transform:none}
+.menu-panel a:hover,.panel-tema:hover{background:var(--rosa-claro)}
+.menu-panel a.activo{background:var(--rosa);color:var(--on-acento)}
+.panel-tema{margin-top:6px;border-top:1.5px dashed var(--lavanda);border-radius:0 0 16px 16px}
+
+/* ===== AJUSTES PARA CELULAR ===== */
+@media (max-width:760px){
+  section{padding:34px 0}
+  .tarjeta{padding:22px 18px}
+  .carrusel{padding:22px 14px 18px}
+  .conclusion{padding:22px 18px}
+  .forma.f3{right:-4px}.forma.f2{left:-4px}
+  .blobs i{filter:blur(48px)}
+  .menu-flot{right:12px}
+}
+
+/* ============ 9. RESPONSIVE ============ */
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-img{order:-1;max-width:260px;margin:0 auto}
+  .barra{justify-content:center;border-radius:24px}
+  nav{width:100%;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  nav::-webkit-scrollbar{display:none}
+  nav a:first-child{margin-left:auto}.tema{margin-right:auto}
+  .slide-caja{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .slide-foto{width:100%;max-width:360px;aspect-ratio:16/10}
+  .foto{aspect-ratio:16/9}
+  .conclusion{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}

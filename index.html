@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¡Empieza a Emprender! | Guía Integral de Emprendimiento Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+/* Aplica el tema guardado (o el del sistema) antes de dibujar la página */
+(function(){var t=null;try{t=localStorage.getItem('tema')}catch(e){}
+if(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)t='oscuro';
+if(t==='oscuro')document.documentElement.dataset.tema='oscuro';})();
+</script>
+<script>
+/* Fotos: primero busca la copia local en la carpeta img/; si no está, prueba la dirección de internet; si tampoco, se oculta */
+document.documentElement.classList.add('js');
+function fallo(i){ if(i.dataset.remoto && !i.dataset.probado){ i.dataset.probado=1; i.src=i.dataset.remoto; } else { i.remove(); } }
+</script>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="progreso" id="progreso" aria-hidden="true"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="cabecera">
+  <div class="barra">
+    <a class="logo" href="#inicio">¡Empieza a Emprender!</a>
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#marca">Marca Personal</a>
+      <a href="#ecommerce">E-commerce</a>
+      <a href="#publicidad">Publicidad</a>
+      <a href="#herramientas">Herramientas</a>
+      <button class="tema" id="tema" aria-label="Cambiar a modo oscuro">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<!-- Menú desplegable: solo aparece cuando bajas -->
+<div class="menu-flot" id="menuFlot">
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuPanel"><span></span><span></span><span></span></button>
+  <div class="menu-panel" id="menuPanel" role="navigation" aria-label="Menú rápido">
+    <a href="#inicio">Inicio</a>
+    <a href="#marca">Marca Personal</a>
+    <a href="#ecommerce">E-commerce</a>
+    <a href="#publicidad">Publicidad</a>
+    <a href="#herramientas">Herramientas</a>
+    <button class="panel-tema" id="tema2" type="button">Modo oscuro</button>
+  </div>
+</div>
+
+<main class="contenedor">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div>
+      <span class="etiqueta">Proyecto de Emprendimiento </span>
+      <h1>Guía Integral de <mark>Emprendimiento</mark> Digital</h1>
+      <p>Aprende a optimizar tu rendimiento y a crear contenido con estrategia: construye tu marca, monta tu tienda virtual, diseña anuncios y elige las herramientas correctas, paso a paso.</p>
+      <a class="boton" href="#herramientas">Empezar a explorar ➔</a>
+    </div>
+    <div class="hero-img">
+      <span class="forma f1" aria-hidden="true"></span><span class="forma f2" aria-hidden="true"></span><span class="forma f3" aria-hidden="true"></span>
+      <div class="marco" data-nombre="Emprendimiento digital">
+        <!-- Imagen de Unsplash (busca img/hero.jpg; si no está, usa internet; si falla queda el fondo lila con el nombre del tema) -->
+        <img src="img/hero.jpg" data-remoto="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=70"
+             alt="Laptop sobre un escritorio de trabajo" loading="lazy" onerror="fallo(this)">
+      </div>
+      </div>
+  </section>
+
+  <div class="cinta" aria-hidden="true"><div class="cinta-pista"><span>Marca personal</span><span>Tienda virtual</span><span>Publicidad digital</span><span>Contenido para redes</span><span>Herramientas</span><span>Constancia</span><span>Rendimiento</span><span>Marca personal</span><span>Tienda virtual</span><span>Publicidad digital</span><span>Contenido para redes</span><span>Herramientas</span><span>Constancia</span><span>Rendimiento</span></div></div>
+
+  <!-- ============ CARRUSEL DE HERRAMIENTAS ============ -->
+  <section id="herramientas">
+    <span class="etiqueta">Punto 6</span>
+    <h2>Herramientas digitales para emprender </h2>
+    <p class="intro">Los grandes multiplicadores de productividad, agrupados por área. Desliza para conocerlas.</p>
+
+    <div class="carrusel" id="carrusel" aria-roledescription="carrusel" aria-label="Herramientas digitales">
+      <div class="ventana">
+        <div class="pista" id="pista" aria-live="polite">
+          <div class="slide"><div class="slide-caja"><div class="slide-foto" data-nombre="Canva / CapCut"><img src="images/CCC.png" alt="Logotipos de Canva y CapCut" loading="lazy" onerror="fallo(this)"></div><div>
+            <span class="etiqueta">Diseño y Publicidad</span><h3>Canva / CapCut</h3>
+            <p>Creación rápida de piezas gráficas y edición de video vertical.</p></div></div></div>
+          <div class="slide"><div class="slide-caja"><div class="slide-foto" data-nombre="Notion / Trello"><img src="images/NT.png" data-remoto="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1000&q=70" alt="Logotipos de Notion y Trello" loading="lazy" onerror="fallo(this)"></div><div>
+            <span class="etiqueta">Gestión y Planificación</span><h3>Notion / Trello</h3>
+            <p>Organización del calendario editorial y de los flujos de trabajo.</p></div></div></div>
+          <div class="slide"><div class="slide-caja"><div class="slide-foto" data-nombre="ChatGPT / Claude"><img src="images/GPTC.png" data-remoto="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1000&q=70" alt="Logotipos de ChatGPT y Claude" loading="lazy" onerror="fallo(this)"></div><div>
+            <span class="etiqueta">Inteligencia Artificial</span><h3>ChatGPT / Claude</h3>
+            <p>Generación de ideas, redacción de scripts y corrección de textos.</p></div></div></div>
+          <div class="slide"><div class="slide-caja"><div class="slide-foto" data-nombre="Shopify / WooCommerce"><img src="images/SW.png" data-remoto="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1000&q=70" alt="Logotipos de Shopify y WooCommerce" loading="lazy" onerror="fallo(this)"></div><div>
+            <span class="etiqueta">Comercio Electrónico</span><h3>Shopify / WooCommerce</h3>
+            <p>Creación y administración de tiendas en línea.</p></div></div></div>
+          <div class="slide"><div class="slide-caja"><div class="slide-foto" data-nombre="ManyChat / HubSpot"><img src="images/MH.png" data-remoto="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=70" alt="Logotipos de ManyChat y HubSpot" loading="lazy" onerror="fallo(this)"></div><div>
+            <span class="etiqueta">Automatización y CRM</span><h3>ManyChat / HubSpot</h3>
+            <p>Respuestas automáticas en redes sociales y gestión de clientes.</p></div></div></div>
+        </div>
+      </div>
+      <div class="controles">
+        <button class="flecha" id="prev" aria-label="Herramienta anterior">❮</button>
+        <div class="puntos" id="puntos"></div>
+        <button class="flecha" id="next" aria-label="Herramienta siguiente">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 1: RENDIMIENTO Y CONTENIDO ============ -->
+  <section id="rendimiento">
+    <div class="tarjeta fondo-rosa">
+      <div class="foto" data-nombre="Rendimiento y contenido"><img src="images/im2.png" data-remoto="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=70" alt="Computador con gráficos de rendimiento" loading="lazy" onerror="fallo(this)"></div>
+      <span class="etiqueta">Sección 1</span>
+      <h2>Rendimiento y creación de contenido </h2>
+      <p>El éxito de un proyecto ya no depende solo de la calidad del producto o servicio, sino de la capacidad de destacar, generar confianza y captar la atención de tu audiencia meta.</p>
+      <p>El rendimiento en contenido es optimizar recursos, ser consistente y convertir las interacciones digitales en resultados de negocio medibles. Así se posiciona una marca, se automatizan ventas y se construye una comunidad leal.</p>
+      <div class="destacado"><b>Clave estratégica:</b> el contenido es el puente entre la propuesta de valor de un negocio y los problemas de sus clientes. Un contenido eficiente ahorra costos publicitarios y genera clientes potenciales de forma constante.</div>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 2: MARCA PERSONAL ============ -->
+  <section id="marca">
+    <div class="foto" data-nombre="Marca personal"><img src="images/im3.png" data-remoto="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=70" alt="Profesional segura de sí misma, imagen de marca personal" loading="lazy" onerror="fallo(this)"></div>
+      <span class="etiqueta">Sección 2</span>
+    <h2>Cómo crear una marca personal </h2>
+    <p class="intro">Es la huella profesional que dejamos en la mente de la audiencia, y genera más confianza que las marcas corporativas tradicionales.</p>
+    <div class="grid">
+      <div class="mini"><h4>Propósito y nicho</h4><p>Identifica tu propuesta de valor, tus áreas de especialidad y la solución específica que ofreces a un segmento de mercado.</p></div>
+      <div class="mini"><h4>Identidad y tono de voz</h4><p>Define tu paleta de colores, tu tipografía y el estilo narrativo: cercano, técnico o inspirador.</p></div>
+      <div class="mini"><h4>Posicionamiento</h4><p>Comparte conocimientos útiles en LinkedIn, Instagram o YouTube para demostrar autoridad.</p></div>
+      <div class="mini"><h4>Storytelling y autenticidad</h4><p>La audiencia conecta con historias de éxito, y también con los aprendizajes y desafíos superados.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 3: E-COMMERCE ============ -->
+  <section id="ecommerce">
+    <div class="tarjeta fondo-menta">
+      <div class="foto" data-nombre="Tienda virtual"><img src="images/im4.png" data-remoto="https://images.pexels.com/photos/4968634/pexels-photo-4968634.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Pago con tarjeta en un datáfono" loading="lazy" onerror="fallo(this)"></div>
+      <span class="etiqueta" style="background:var(--blanco)">Sección 3</span>
+      <h2>Tiendas virtuales y e-commerce </h2>
+      <p>El comercio electrónico es el motor de ventas global. Una tienda sólida exige planificar la infraestructura tecnológica y la experiencia del usuario (UX).</p>
+
+      <h3 class="sub">Dos modelos de negocio</h3>
+      <div class="versus">
+        <div class="mini"><h4>E-commerce propio</h4><p>Shopify, WooCommerce o Tiendanube. Control absoluto sobre la marca, la base de datos de clientes y las promociones.</p></div>
+        <div class="mini"><h4>Marketplaces</h4><p>Amazon o Mercado Libre. Acceso inmediato a millones de compradores activos, a cambio de comisiones por venta.</p></div>
+      </div>
+
+      <h3 class="sub">Factores clave de éxito</h3>
+      <div class="grid">
+        <div class="mini"><span class="dato">+70%</span><h4>Mobile-First</h4><p>De las compras en línea se hacen desde teléfonos inteligentes.</p></div>
+        <div class="mini"><h4>Pagos seguros</h4><p>Stripe, PayPal, Mercado Pago o Addi dan confianza e instantaneidad.</p></div>
+        <div class="mini"><h4>Logística y envíos</h4><p>Tiempos de entrega transparentes, costos claros y empresas logísticas locales e internacionales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 4: PUBLICIDAD DIGITAL ============ -->
+  <section id="publicidad">
+    <div class="foto" data-nombre="Publicidad digital"><img src="images/im5.png" data-remoto="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=70" alt="Panel de analítica de campañas publicitarias" loading="lazy" onerror="fallo(this)"></div>
+      <span class="etiqueta">Sección 4</span>
+    <h2>Diseño de publicidad digital </h2>
+    <p class="intro">Permite acelerar el crecimiento con una segmentación precisa del público y la optimización constante del retorno de inversión (ROAS).</p>
+
+    <h3 class="sub">Componentes de un anuncio de alto impacto</h3>
+    <div class="grid">
+      <div class="mini"><h4>Gancho</h4><p>Los primeros 3 segundos de un video, o el titular de una imagen, deben captar la atención al instante.</p></div>
+      <div class="mini"><h4>Mensaje claro y solución</h4><p>Explica de forma directa el problema que resuelve el producto o servicio.</p></div>
+      <div class="mini"><h4>Llamado a la acción (CTA)</h4><p>Indica qué hacer después: “Compra ahora”, “Regístrate hoy” o “Descarga la guía”.</p></div>
+    </div>
+
+    <h3 class="sub">Plataformas principales</h3>
+    <div class="grid">
+      <div class="mini fondo-lavanda"><h4>Meta Ads</h4><p>Facebook e Instagram. Ideal para ventas directas B2C, remarketing y segmentación por intereses.</p></div>
+      <div class="mini fondo-durazno"><h4>Google Ads</h4><p>Búsqueda y YouTube. Captura la intención de compra cuando buscan soluciones específicas.</p></div>
+      <div class="mini fondo-rosa"><h4>TikTok Ads</h4><p>Excelente para audiencias jóvenes mediante videos orgánicos con formato nativo.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 5: ESTRATEGIA DE CONTENIDO ============ -->
+  <section id="contenido">
+    <div class="tarjeta fondo-lavanda">
+      <div class="foto" data-nombre="Contenido para redes"><img src="img/contenido.jpg" data-remoto="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1000&q=70" alt="Teléfono con aplicaciones de redes sociales" loading="lazy" onerror="fallo(this)"></div>
+      <span class="etiqueta" style="background:var(--blanco)">Sección 5</span>
+      <h2>Creación de contenido para redes sociales </h2>
+      <p>La constancia depende de un sistema eficiente que evite el agotamiento del creador. Esta es la estructura básica:</p>
+      <div class="grid">
+        <div class="mini"><h4>Educativo</h4><p>Tutoriales, guías paso a paso y consejos que posicionan la marca como experta.</p></div>
+        <div class="mini"><h4>Entretenimiento / tendencia</h4><p>Adaptación de formatos populares para aumentar el alcance masivo.</p></div>
+        <div class="mini"><h4>Prueba social / venta</h4><p>Testimonios de clientes, casos de éxito y ofertas directas.</p></div>
+      </div>
+      <div class="destacado"><b>Metodología recomendada:</b> haz “Batch Creation” (creación en lote). Dedica un día a producir los contenidos del mes y programa las publicaciones para mantener presencia continua.</div>
+    </div>
+  </section>
+
+  <!-- ============ CONCLUSIÓN ============ -->
+  <section id="conclusion">
+    <div class="conclusion">
+      <div class="foto" data-nombre="Conclusión"><img src="img/conclusion.jpg" data-remoto="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1000&q=70" alt="Presentación de resultados en equipo" loading="lazy" onerror="fallo(this)"></div>
+      <span class="etiqueta" style="background:var(--blanco)">Conclusión </span>
+      <h2>Recomendaciones finales</h2>
+      <p>El éxito en el emprendimiento digital requiere equilibrar la estrategia de contenidos con la eficiencia operativa. No se trata solo de publicar con frecuencia, sino de conectar cada pieza con un embudo de ventas estructurado dentro de un comercio electrónico accesible.</p>
+      <p style="margin-bottom:0"><b>Para comenzar:</b></p>
+      <ol class="pasos">
+        <li>Enfócate en definir tu marca personal.</li>
+        <li>Domina una o dos herramientas digitales clave.</li>
+        <li>Mantén la consistencia antes de escalar hacia campañas publicitarias pagadas.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p><b>Proyecto</b></p>
+  <small>Hecho con cariño por Nataly Castañeda · Informática · 9°02 · 2026</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
